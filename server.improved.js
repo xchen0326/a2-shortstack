@@ -40,7 +40,7 @@ const handlePost = function( request, response ) {
   })
 
   request.on( 'end', function() {
-    //const appdata=[]
+    // const appdata=[]
     const info = JSON.parse( dataString )
     //info.sum = "kkk"+info.studentId
     if(info.currentYear === "Freshman"){
