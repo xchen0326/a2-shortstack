@@ -31,5 +31,5 @@ Based on Gong's comments, I already fix the bug that data disappears after refre
 I asked Ying to review the application. To use the application, I asked her to simply entering the web url, input the name, select gender and current year and click on submit.   
 She face no difficulties using the app. The following is what she commented on:  
 You may make the input boxes wider to fill out the whole length such that it looks more beautiful.  
-I am suprised by her comment that the application looks comfortable as the font size is big.
+I am suprised by her comment that the application looks comfortable as the font size is big.  
 I may change the box width to be wider.
