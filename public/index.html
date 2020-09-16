@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <form action="">
+    <form action="GET">
       <div class="name_div">
         <div class="name">
           <div class="input_label">
-            <label for="yourname">Your Name:</label><br />
+            <label>Your Name:</label><br />
           </div>
           <div class="input_value">
             <input
@@ -23,7 +23,7 @@
         </div>
         <div class="gnder">
           <div class="input_label">
-            <label for="gender">Your Gender</label><br />
+            <label>Your Gender</label><br />
           </div>
           <div class="input_value">
           <select id="select" style="font-size:24px">
@@ -34,7 +34,7 @@
         </div>
         <div class="currentYear">
           <div class="input_label">
-            <label for="currentYear">Your Current Year:</label><br />
+            <label>Your Current Year:</label><br />
           </div>
           <div class="input_value">
 <!--             <input
@@ -70,7 +70,10 @@
     </div>
     
     <script>
-    const submit = function(e) {      
+    
+      
+    const submit = function(e) {     
+      myfun()
       // prevent default form action from being carried out
       e.preventDefault();
 
@@ -86,7 +89,6 @@
           expectedLeaveYear: ""
         },
         body = JSON.stringify(json);
-      
       if(!input.value){
         alert("Please input your name.")
         return
@@ -145,13 +147,24 @@
             // container.appendChild(sbox)
             
             container.appendChild(document.createElement("br"));
-            console.log(g);
+            
           }
         });
       return false;
     };
 
+    function myfun(){
+       const response = fetch('/results', {
+          method: 'GET'
+        })
+        .then(response => response.json())
+        .then(function (response) {
+          console.log(response)
+        })
+    }
+        
     window.onload = function() {
+      //myfun()
       const button = document.querySelector("button");
       button.onclick = submit;
     };

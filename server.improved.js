@@ -17,13 +17,17 @@ const server = http.createServer( function( request,response ) {
     handlePost( request, response ) 
   }
 })
-
 const handleGet = function( request, response ) {
   const filename = dir + request.url.slice( 1 ) 
 
   if( request.url === '/' ) {
     sendFile( response, 'public/index.html' )
-  }else{
+  }
+  else if (request.url === '/results') {
+    response.setHeader("Content-Type", "application/json")
+    response.end(JSON.stringify(appdata))
+  } 
+  else{
     sendFile( response, filename )
   }
 }
