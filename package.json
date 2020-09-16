@@ -1,8 +1,8 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
+  "name": "Xiaowei Chen",
+  "version": "0.0.1",
+  "description": "This is assignment 2 for Webware",
+  "author": "Xiaowei Chen",
   "scripts": {
     "start": "node server.improved.js"
   },
