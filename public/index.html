@@ -66,7 +66,8 @@
     <div id="container">
       <!--       <input type="text" id="output" style="width:200px"> -->
     </div>
-
+    
+    <button id="delete">delete</button>
     <script>
       const submit = function(e) {
         // prevent default form action from being carried out
@@ -192,6 +193,7 @@
               var ediv = document.createElement("div");
               ediv.setAttribute("style", "margin:auto");
 
+              response[obj].gender = "Male"
               var g = response[obj].gender;
               var n = response[obj].yourname;
               var c = response[obj].currentYear;
@@ -236,11 +238,23 @@
             }
           });
       }
+      
+      const deleted = function(e) {
+        const json = {yourname:"hello",gender:"hekko",currentYear:"",expectedLeaveYear:""},
+              body = JSON.stringify(json)
+        fetch("/deletion", {
+          method: "POST",
+          body
+        })
+        console.log("o")
+      }
 
       window.onload = function() {
         myfun();
-        const button = document.querySelector("button");
+        const button = document.querySelector("#btn");
         button.onclick = submit;
+        const button2 = document.querySelector("#delete");
+        button2.onclick = deleted;
       };
     </script>
   </body>

@@ -6,7 +6,7 @@ const http = require( 'http' ),
       dir  = 'public/',
       port = 3000
 
-const appdata = [
+var appdata = [
   
 ]
 
@@ -34,13 +34,42 @@ const handleGet = function( request, response ) {
 
 const handlePost = function( request, response ) {
   let dataString = ''
+  // let temp = ''
 
-  request.on( 'data', function( data ) {
+  if(request.url === '/deletion'){
+    request.on( 'data', function( data1 ) {
+      // temp += data1
+      const inf = JSON.parse(data1)
+      var list = []
+      if(appdata){
+    for(var i = 0; i < appdata.length; i++){
+      if(appdata[i].yourname!==inf.yourname){
+      //   appdata[i].expectedLeaveYear="1990"
+        list.push(appdata[i])
+      }
+    }}
+      if(list){
+        appdata = []
+    for(var i = 0; i < list.length; i++){
+      
+        appdata.push(list[i])
+    }}
+      console.log(appdata)
+    })
+  }
+  else{
+    request.on( 'data', function( data ) {
       dataString += data 
-  })
+    })
+  }
 
   request.on( 'end', function() {
     // const appdata=[]
+    // if(temp!==''){
+    // const k = JSON.parse(temp)
+    // // console.log(k)
+    // }
+    if(dataString!==''){
     const info = JSON.parse( dataString )
     //info.sum = "kkk"+info.studentId
     if(info.currentYear === "Freshman"){
@@ -55,8 +84,14 @@ const handlePost = function( request, response ) {
     if(info.currentYear === "Senior"){
       info.expectedLeaveYear = "2021"
     }
-    appdata.push(info)
-    console.log(appdata)
+    appdata.push(info)}
+    // if(appdata){
+    // for(var i = 0; i < appdata.length; i++){
+    //   console.log(appdata[i])
+    // }}
+    // console.log(appdata)
+    // console.log(dataString)
+    // console.log(temp)
 
     // ... do something with the data here!!!
 
